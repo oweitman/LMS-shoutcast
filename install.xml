@@ -1,0 +1,14 @@
+<?xml version='1.0' standalone='yes'?>
+<extensions>
+  <module>Plugins::NewShoutcast::Plugin</module>
+  <description>PLUGIN_NEWSHOUTCAST_DESC</description>
+  <version>0.0.2</version>
+  <defaultState>enabled</defaultState>
+  <icon>plugins/NewShoutcast/html/images/shoutcast.png</icon>
+  <targetApplication>
+    <maxVersion>7.*</maxVersion>
+    <minVersion>7.7</minVersion>
+    <id>SlimServer</id>
+  </targetApplication>
+  <name>PLUGIN_NEWSHOUTCAST</name>
+</extensions>

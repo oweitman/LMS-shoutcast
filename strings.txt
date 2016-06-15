@@ -1,0 +1,41 @@
+PLUGIN_NEWSHOUTCAST
+	EN	Shoutcast Plugin	
+
+PLUGIN_NEWSHOUTCAST_MENU
+	EN	Shoutcast
+
+PLUGIN_NEWSHOUTCAST_DESC
+	EN	Plugin to stream  Shoutcast radio stations
+	DE	Plugin für das streamen von Shoutcast Radiostationen
+	
+PLUGIN_NEWSHOUTCAST_MISSINGSSL
+	EN	SSL required (try to install it using CPAN and/or on Linux do "sudo apt-get install libio-socket-ssl-perl libnet-ssleay-perl")
+	DE	SSL wird benötigt (versuche SSL über CPAN und/order den Linuxbefehl "sudo apt-get install libio-socket-ssl-perl libnet-ssleay-perl" zu installieren.
+
+PLUGIN_NEWSHOUTCAST_GENRES
+	EN	Genres
+	DE	Genres
+	
+PLUGIN_NEWSHOUTCAST_TOPSTATIONS
+	EN	Top Stations
+	DE	Beliebte Sender
+
+PLUGIN_NEWSHOUTCAST_SEARCHSTATION
+	EN	Search for Stations
+	DE	Suche nach Sendern
+
+PLUGIN_NEWSHOUTCAST_SEARCHARTIST
+	EN	Search for Artists
+	DE	Suche nach Interpreten
+
+PLUGIN_NEWSHOUTCAST_LISTENER
+	EN	Listeners
+	DE	Hörer
+
+PLUGIN_NEWSHOUTCAST_BITRATE
+	EN	Bitrate
+	DE	Bitrate
+
+
+	
+	
