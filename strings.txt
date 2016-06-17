@@ -36,6 +36,40 @@ PLUGIN_NEWSHOUTCAST_BITRATE
 	EN	Bitrate
 	DE	Bitrate
 
+PLUGIN_NEWSHOUTCAST_SETTINGS
+	EN	Settings
+	DE	Einstellungen
 
+PLUGIN_NEWSHOUTCAST_BITRATEFILTERING
+	EN	Bitrate-Filtering
+	DE	Bitrate-Filterung
+	
+PLUGIN_NEWSHOUTCAST_BITRATEFILTER_0
+	EN	No Filter
+	DE	Kein Filter
+	
+PLUGIN_NEWSHOUTCAST_BITRATEFILTER_32
+	EN	32kb/s and up
+	DE	32kb/s und höher
+	
+PLUGIN_NEWSHOUTCAST_BITRATEFILTER_64
+	EN	64kb/s and up
+	DE	64kb/s und höher
+	
+PLUGIN_NEWSHOUTCAST_BITRATEFILTER_96
+	EN	96kb/s and up
+	DE	96kb/s und höher
+	
+PLUGIN_NEWSHOUTCAST_BITRATEFILTER_128
+	EN	128kb/s and up
+	DE	128kb/s und höher
+	
+PLUGIN_NEWSHOUTCAST_BITRATEFILTER_256
+	EN	256kb/s and up
+	DE	256kb/s und höher
+	
+PLUGIN_NEWSHOUTCAST_BITRATEFILTER_SET
+	EN	Bitrate Filter set
+	DE	Bitrate Filter gesetzt
 	
 	

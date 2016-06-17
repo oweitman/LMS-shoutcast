@@ -25,6 +25,11 @@ my	$log = Slim::Utils::Log->addLogCategory({
 
 my $prefs = preferences('plugin.newshoutcast');
 
+$prefs->init({ 
+	bitrate_filter => 0, 
+});
+
+
 sub initPlugin {
 	my $class = shift;
 
@@ -64,10 +69,101 @@ sub toplevel {
 
 		{ name => cstring($client, 'PLUGIN_NEWSHOUTCAST_SEARCHARTIST'), type => 'search', url => \&searchArtistsHandler },
 
+		{ name => cstring($client, 'PLUGIN_NEWSHOUTCAST_SETTINGS'), type => 'url', url => \&settingsHandler },
+
 	]);
 
 
 }
+
+sub setBitrateHandler {
+
+	my ($client, $cb, $args, $params) = @_;
+
+	$log->debug("Shoutcast setBitrateHandler");
+	$prefs->set('bitrate_filter', $params->{filter});
+
+	my $items = [];
+
+	push @$items, {
+		name => cstring($client, 'PLUGIN_NEWSHOUTCAST_BITRATEFILTERING'),
+		type => 'text',
+	};
+	$cb->( $items );
+
+
+}
+
+sub settingsHandler {
+
+	my ($client, $cb, $args, $params) = @_;
+
+	$log->debug("Shoutcast settingsHandler");
+
+	my $items = [];
+
+	push @$items, {
+		name => cstring($client, 'PLUGIN_NEWSHOUTCAST_BITRATEFILTERING'),
+		type => 'url',
+		url  => \&bitrateFilterHandler,
+	};
+	$cb->( $items );
+
+}
+
+
+sub bitrateFilterHandler {
+
+	my ($client, $cb, $args, $params) = @_;
+
+	$log->debug("Shoutcast BitrateFilterHandler");
+
+	my $items = [];
+
+	push @$items, {
+		name => ($prefs->get('bitrate_filter')==0 ? '-> ' : '') . cstring($client, 'PLUGIN_NEWSHOUTCAST_BITRATEFILTER_0'),
+		type => 'url',
+		url  => \&setBitrateHandler,
+		passthrough => [  { filter => '0' } ],
+	};
+	push @$items, {
+		name => ($prefs->get('bitrate_filter')==32 ? '-> ' : '') . cstring($client, 'PLUGIN_NEWSHOUTCAST_BITRATEFILTER_32'),
+		type => 'url',
+		url  => \&setBitrateHandler,
+		passthrough => [  { filter => '32' } ],
+	};
+	push @$items, {
+		name => ($prefs->get('bitrate_filter')==64 ? '-> ' : '') . cstring($client, 'PLUGIN_NEWSHOUTCAST_BITRATEFILTER_64'),
+		type => 'url',
+
+		url  => \&setBitrateHandler,
+		passthrough => [  { filter => '64' } ],
+	};
+	push @$items, {
+		name => ($prefs->get('bitrate_filter')==96 ? '-> ' : '') . cstring($client, 'PLUGIN_NEWSHOUTCAST_BITRATEFILTER_96'),
+		type => 'url',
+
+		url  => \&setBitrateHandler,
+		passthrough => [  { filter => '96' } ],
+	};
+	push @$items, {
+		name => ($prefs->get('bitrate_filter')==128 ? '-> ' : '') . cstring($client, 'PLUGIN_NEWSHOUTCAST_BITRATEFILTER_128'),
+		type => 'url',
+
+		url  => \&setBitrateHandler,
+		passthrough => [  { filter => '128' } ],
+	};
+	push @$items, {
+		name => ($prefs->get('bitrate_filter')==256 ? '-> ' : '') . cstring($client, 'PLUGIN_NEWSHOUTCAST_BITRATEFILTER_256'),
+		type => 'url',
+
+		url  => \&setBitrateHandler,
+		passthrough => [  { filter => '256' } ],
+	};
+	$cb->( $items );
+
+}
+
 
 sub GenreHandler {
 
@@ -193,7 +289,7 @@ sub searchGenreHandler {
 sub getStations {
 	my ($stations, $cb) = @_;
 
-	$log->debug("Shoutcast getStations".Dumper($stations));
+	$log->debug("Shoutcast getStations");
 
 	my @stations = @{ $stations };
 	my $station = [];
@@ -201,15 +297,24 @@ sub getStations {
 	
 	my $items = [];
 	for $station ( @stations ) {
-		push @$items, {
-			name 		=> $station->{Name}." (".string('PLUGIN_NEWSHOUTCAST_LISTENER').": ".$station->{Listeners}." / ".string('PLUGIN_NEWSHOUTCAST_BITRATE').": ".$station->{Bitrate}.")",
-			type 		=> 'audio',
-			url  		=> 'http://yp.shoutcast.com/sbin/tunein-station.m3u?id='.$station->{ID},
-			bitrate 	=> $station->{Bitrate},
-			listeners 	=> $station->{Listeners},
-			genre	 	=> $station->{Genre},
-			current_track	=> $station->{CurrentTrack},
-		};
+
+
+		$log->debug("station" . Dumper($station->{Bitrate}));
+		$log->debug("pref" . Dumper($prefs->get('bitrate_filter')));
+
+
+		if ($station->{Bitrate} >= $prefs->get('bitrate_filter')) {
+
+			push @$items, {
+				name 		=> $station->{Name}." (".string('PLUGIN_NEWSHOUTCAST_LISTENER').": ".$station->{Listeners}." / ".string('PLUGIN_NEWSHOUTCAST_BITRATE').": ".$station->{Bitrate}.")",
+				type 		=> 'audio',
+				url  		=> 'http://yp.shoutcast.com/sbin/tunein-station.m3u?id='.$station->{ID},
+				bitrate 	=> $station->{Bitrate},
+				listeners 	=> $station->{Listeners},
+				genre	 	=> $station->{Genre},
+				current_track	=> $station->{CurrentTrack},
+			};
+		}
 	}
 	$cb->( $items );
 }
