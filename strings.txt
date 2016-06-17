@@ -72,4 +72,28 @@ PLUGIN_NEWSHOUTCAST_BITRATEFILTER_SET
 	EN	Bitrate Filter set
 	DE	Bitrate Filter gesetzt
 	
+PLUGIN_NEWSHOUTCAST_BITRATEFILTERING_RESULT
+	EN	Bitrate-Filtering saved
+	DE	Bitrate-Filterung gesetzt
 	
+PLUGIN_NEWSHOUTCAST_SORTING
+	EN	Sorting order of stations
+	DE	Sortierreihenfolge der Sender
+	
+PLUGIN_NEWSHOUTCAST_SORT_LISTENER
+	EN	Number of Listener
+	DE	Anzahl Hörer
+
+PLUGIN_NEWSHOUTCAST_SORT_BITRATE
+	EN	Highest Bitrate
+	DE	Höchste Bitrate
+
+PLUGIN_NEWSHOUTCAST_SORT_ALPHA
+	EN	Alphanumeric
+	DE	Alphabetisch
+
+PLUGIN_NEWSHOUTCAST_SORTING_RESULT
+	EN	Sorting order saved
+	DE	Sortierung gesetzt
+
+

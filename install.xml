@@ -2,7 +2,7 @@
 <extensions>
   <module>Plugins::NewShoutcast::Plugin</module>
   <description>PLUGIN_NEWSHOUTCAST_DESC</description>
-  <version>0.0.4</version>
+  <version>0.0.5</version>
   <defaultState>enabled</defaultState>
   <icon>plugins/NewShoutcast/html/images/shoutcast.png</icon>
   <targetApplication>

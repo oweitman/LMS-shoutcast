@@ -5,6 +5,7 @@ package Plugins::NewShoutcast::Plugin;
 # Released under GPLv2
 
 use strict;
+use Switch;
 use base qw(Slim::Plugin::OPMLBased);
 
 use Data::Dumper;
@@ -26,7 +27,8 @@ my	$log = Slim::Utils::Log->addLogCategory({
 my $prefs = preferences('plugin.newshoutcast');
 
 $prefs->init({ 
-	bitrate_filter => 0, 
+	bitrate_filter 	=> 0, 
+	sorting 		=> "L",
 });
 
 
@@ -81,19 +83,37 @@ sub setBitrateHandler {
 	my ($client, $cb, $args, $params) = @_;
 
 	$log->debug("Shoutcast setBitrateHandler");
+
 	$prefs->set('bitrate_filter', $params->{filter});
 
 	my $items = [];
 
 	push @$items, {
-		name => cstring($client, 'PLUGIN_NEWSHOUTCAST_BITRATEFILTERING'),
+		name => cstring($client, 'PLUGIN_NEWSHOUTCAST_BITRATEFILTERING_RESULT'),
 		type => 'text',
 	};
 	$cb->( $items );
 
 
 }
+sub setSortingHandler {
 
+	my ($client, $cb, $args, $params) = @_;
+
+	$log->debug("Shoutcast setSortingHandler");
+
+	$prefs->set('sorting', $params->{filter});
+
+	my $items = [];
+
+	push @$items, {
+		name => cstring($client, 'PLUGIN_NEWSHOUTCAST_SORTING_RESULT'),
+		type => 'text',
+	};
+	$cb->( $items );
+
+
+}
 sub settingsHandler {
 
 	my ($client, $cb, $args, $params) = @_;
@@ -107,10 +127,45 @@ sub settingsHandler {
 		type => 'url',
 		url  => \&bitrateFilterHandler,
 	};
+	push @$items, {
+		name => cstring($client, 'PLUGIN_NEWSHOUTCAST_SORTING'),
+		type => 'url',
+		url  => \&sortingHandler,
+	};
 	$cb->( $items );
 
 }
 
+
+sub sortingHandler {
+
+	my ($client, $cb, $args, $params) = @_;
+
+	$log->debug("Shoutcast sortingHandler");
+
+	my $items = [];
+
+	push @$items, {
+		name => ($prefs->get('sorting') eq 'L' ? '-> ' : '') . cstring($client, 'PLUGIN_NEWSHOUTCAST_SORT_LISTENER'),
+		type => 'url',
+		url  => \&setSortingHandler,
+		passthrough => [  { filter => 'L' } ],
+	};
+	push @$items, {
+		name => ($prefs->get('sorting') eq 'B' ? '-> ' : '') . cstring($client, 'PLUGIN_NEWSHOUTCAST_SORT_BITRATE'),
+		type => 'url',
+		url  => \&setSortingHandler,
+		passthrough => [  { filter => 'B' } ],
+	};
+	push @$items, {
+		name => ($prefs->get('sorting') eq 'A' ? '-> ' : '') . cstring($client, 'PLUGIN_NEWSHOUTCAST_SORT_ALPHA'),
+		type => 'url',
+		url  => \&setSortingHandler,
+		passthrough => [  { filter => 'A' } ],
+	};
+	$cb->( $items );
+
+}
 
 sub bitrateFilterHandler {
 
@@ -292,16 +347,26 @@ sub getStations {
 	$log->debug("Shoutcast getStations");
 
 	my @stations = @{ $stations };
+	my @sorted ;
+
+	switch($prefs->get('sorting')){
+		case 'L'	{ 
+				@sorted =  sort { $b->{Listeners} <=> $a->{Listeners} } @stations ; 
+				}
+		case 'B'	{
+				@sorted =  sort { $b->{Bitrate} <=> $a->{Bitrate} } @stations ; 
+				}
+		case 'A'	{ 
+				@sorted =  sort { $b->{Name} <=> $a->{Name} } @stations ; 
+				}
+	}	
+
+
 	my $station = [];
 
 	
 	my $items = [];
-	for $station ( @stations ) {
-
-
-		$log->debug("station" . Dumper($station->{Bitrate}));
-		$log->debug("pref" . Dumper($prefs->get('bitrate_filter')));
-
+	for $station ( @sorted ) {
 
 		if ($station->{Bitrate} >= $prefs->get('bitrate_filter')) {
 
