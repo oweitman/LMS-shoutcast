@@ -202,12 +202,13 @@ sub getStations {
 	my $items = [];
 	for $station ( @stations ) {
 		push @$items, {
-			name 		=> $station->{Name}." (".string('PLUGIN_NEWSHOUTCAST_LISTENER').": ".$station->{Listeners}."/ ".string('PLUGIN_NEWSHOUTCAST_BITRATE').": ".$station->{Bitrate}.")",
+			name 		=> $station->{Name}." (".string('PLUGIN_NEWSHOUTCAST_LISTENER').": ".$station->{Listeners}." / ".string('PLUGIN_NEWSHOUTCAST_BITRATE').": ".$station->{Bitrate}.")",
 			type 		=> 'audio',
 			url  		=> 'http://yp.shoutcast.com/sbin/tunein-station.m3u?id='.$station->{ID},
 			bitrate 	=> $station->{Bitrate},
 			listeners 	=> $station->{Listeners},
 			genre	 	=> $station->{Genre},
+			current_track	=> $station->{CurrentTrack},
 		};
 	}
 	$cb->( $items );
