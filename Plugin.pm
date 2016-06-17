@@ -28,7 +28,7 @@ my $prefs = preferences('plugin.newshoutcast');
 sub initPlugin {
 	my $class = shift;
 
-	$log->info("Shoutcast initPlugin");
+	$log->debug("Shoutcast initPlugin");
 
 	$class->SUPER::initPlugin(
 		feed   => \&toplevel,
@@ -46,7 +46,7 @@ sub getDisplayName { 'PLUGIN_NEWSHOUTCAST' }
 sub toplevel {
 	my ($client, $callback, $args) = @_;
 
-	$log->info("Shoutcast toplevel ");
+	$log->debug("Shoutcast toplevel ");
 	
 	if (!Slim::Networking::Async::HTTP::hasSSL() || !eval { require IO::Socket::SSL } ) {
 		$callback->([
@@ -72,9 +72,10 @@ sub toplevel {
 sub GenreHandler {
 
 	my ($client, $cb, $args) = @_;
+
+	$log->debug("Shoutcast GenresHandler");
 	
 	my $g = Plugins::NewShoutcast::Genres::getGenres();
-	$log->info("Shoutcast GenresHandler");
 
 	my $items = [];
 
@@ -96,11 +97,12 @@ sub GenreHandler {
 sub subGenreHandler {
 	my ($client, $cb, $args, $params) = @_;
 
+	$log->debug("Shoutcast subGenresHandler");
+
 	$params ||= {};
 	
 	my $genres = Plugins::NewShoutcast::Genres::getGenres();
 	my $genre = $params->{genre};
-	$log->info("Shoutcast subGenresHandler");
 
 	my $items = [];
 
@@ -131,9 +133,10 @@ sub subGenreHandler {
 sub searchStationsHandler {
 	my ($client, $cb, $args, $params) = @_;
 
+	$log->debug("Shoutcast searchStationsHandler");
+#	$log->debug(Dumper( $args->{search} ));
+
 	my $key = $args->{search};
-	$log->info("Shoutcast searchStationsHandler");
-#	$log->info(Dumper( $args->{search} ));
 
 	Plugins::NewShoutcast::API->searchStations( $key, sub {
 
@@ -147,8 +150,9 @@ sub searchStationsHandler {
 sub searchArtistsHandler {
 	my ($client, $cb, $args, $params) = @_;
 
+	$log->debug("Shoutcast searchArtistsHandler".Dumper( $args->{search} ));
+
 	my $key = $args->{search};
-	$log->info("Shoutcast searchArtistsHandler".Dumper( $args->{search} ));
 	Plugins::NewShoutcast::API->searchArtists( $key, sub {
 
 		my $stations = shift;
@@ -161,7 +165,7 @@ sub searchArtistsHandler {
 sub topStationsHandler {
 	my ($client, $cb, $args, $params) = @_;
 
-	$log->info("Shoutcast topStationsHandler");
+	$log->debug("Shoutcast topStationsHandler");
 
 	Plugins::NewShoutcast::API->topStations( sub {
 
@@ -175,9 +179,9 @@ sub topStationsHandler {
 sub searchGenreHandler {
 	my ($client, $cb, $args, $params) = @_;
 
-	my $genre = $params->{genre};
+	$log->debug("Shoutcast searchGenreHandler");
 
-	$log->info("Shoutcast searchGenreHandler");
+	my $genre = $params->{genre};
 
 	Plugins::NewShoutcast::API->browseByGenre( $genre, sub {
 		my $stations = shift;
@@ -189,10 +193,11 @@ sub searchGenreHandler {
 sub getStations {
 	my ($stations, $cb) = @_;
 
+	$log->debug("Shoutcast getStations".Dumper($stations));
+
 	my @stations = @{ $stations };
 	my $station = [];
 
-	$log->info("Shoutcast getStations".Dumper($stations));
 	
 	my $items = [];
 	for $station ( @stations ) {

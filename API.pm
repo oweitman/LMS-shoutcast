@@ -26,7 +26,7 @@ sub flushCache { $cache->cleanup(); }
 sub browseByGenre {
 
 	my ( $class, $genre, $cb, $args ) = @_;
-	$log->info("Shoutcast browseByGenre");
+	$log->debug("Shoutcast browseByGenre");
 
 	my $url = "https://www.shoutcast.com/Home/BrowseByGenre";
 
@@ -37,7 +37,7 @@ sub browseByGenre {
 	my $cacheKey = $args->{_noCache} ? '' : md5_hex($url.$genre);
 
 	if ( $cacheKey && (my $cached = $cache->get($cacheKey)) ) {
-		main::INFOLOG && $log->info("Returning cached data for: $url");
+		$log->debug("Returning cached data for: $url");
 
 		$cb->($cached);
 		return;
@@ -52,11 +52,11 @@ sub browseByGenre {
 			
 			if ($@) {
 
-				$log->error(Data::Dump::dump($response)) unless $log->is_debug;
+				$log->error(Dumper($response)) unless $log->is_debug;
 				$log->error($@);
 			}
 
-#			$log->is_debug && warn Data::Dump::dump($result);
+			$log->is_debug && warn Dumper($result);
 
 			$result ||= {};
 			
@@ -66,7 +66,7 @@ sub browseByGenre {
 		},
 
 		sub {
-			warn Data::Dump::dump(@_);
+			warn Dumper(@_);
 			$log->error($_[1]);
 			$cb->( { error => $_[1] } );
 		},
@@ -82,13 +82,14 @@ sub browseByGenre {
 sub topStations {
 
 	my ( $class, $cb, $args ) = @_;
-	$log->info("Shoutcast topStations");
+	$log->debug("Shoutcast topStations");
+
 	my $url = "https://www.shoutcast.com/Home/Top";
 
 	my $cacheKey = $args->{_noCache} ? '' : md5_hex($url);
 
 	if ( $cacheKey && (my $cached = $cache->get($cacheKey)) ) {
-		main::INFOLOG && $log->info("Returning cached data for: $url");
+		$log->debug("Returning cached data for: $url");
 
 		$cb->($cached);
 		return;
@@ -103,11 +104,11 @@ sub topStations {
 			
 			if ($@) {
 
-				$log->error(Data::Dump::dump($response)) unless $log->is_debug;
+				$log->error(Dumper($response)) unless $log->is_debug;
 				$log->error($@);
 			}
 
-#			$log->is_debug && warn Data::Dump::dump($result);
+			$log->is_debug && warn Dumper($result);
 
 			$result ||= {};
 			
@@ -117,7 +118,7 @@ sub topStations {
 		},
 
 		sub {
-			warn Data::Dump::dump(@_);
+			warn Dumper(@_);
 			$log->error($_[1]);
 			$cb->( { error => $_[1] } );
 		},
@@ -137,7 +138,8 @@ sub searchStations {
 
 	my ( $class, $key, $cb, $args ) = @_;
 
-	$log->info("Shoutcast searchStations");
+	$log->debug("Shoutcast searchStations");
+
 	my $url = "https://www.shoutcast.com/Search/UpdateAdvancedSearch";
 
 	my $postdata = to_json({
@@ -151,7 +153,7 @@ sub searchStations {
 	my $cacheKey = $args->{_noCache} ? '' : md5_hex($url.'stations'.$key);
 
 	if ( $cacheKey && (my $cached = $cache->get($cacheKey)) ) {
-		main::INFOLOG && $log->info("Returning cached data for: $url");
+		$log->debug("Returning cached data for: $url");
 
 		$cb->($cached);
 		return;
@@ -165,11 +167,11 @@ sub searchStations {
 			
 			if ($@) {
 
-				$log->error(Data::Dump::dump($response)) unless $log->is_debug;
+				$log->error(Dumper($response)) unless $log->is_debug;
 				$log->error($@);
 			}
 
-#			$log->is_debug && warn Data::Dump::dump($result);
+			$log->is_debug && warn Dumper($result);
 
 			$result ||= {};
 			
@@ -179,7 +181,7 @@ sub searchStations {
 		},
 
 		sub {
-			warn Data::Dump::dump(@_);
+			warn Dumper(@_);
 			$log->error($_[1]);
 			$cb->( { error => $_[1] } );
 		},
@@ -196,7 +198,8 @@ sub searchArtists {
 
 	my ( $class, $key, $cb, $args ) = @_;
 
-	$log->info("Shoutcast searchArtists");
+	$log->debug("Shoutcast searchArtists");
+
 	my $url = "https://www.shoutcast.com/Search/UpdateAdvancedSearch";
 
 	my $postdata = to_json({
@@ -210,7 +213,7 @@ sub searchArtists {
 	my $cacheKey = $args->{_noCache} ? '' : md5_hex($url.'artists'.$key);
 
 	if ( $cacheKey && (my $cached = $cache->get($cacheKey)) ) {
-		main::INFOLOG && $log->info("Returning cached data for: $url");
+		$log->debug("Returning cached data for: $url");
 
 		$cb->($cached);
 		return;
@@ -223,11 +226,11 @@ sub searchArtists {
 			
 			if ($@) {
 
-				$log->error(Data::Dump::dump($response)) unless $log->is_debug;
+				$log->error(Dumper($response)) unless $log->is_debug;
 				$log->error($@);
 			}
 
-#			$log->is_debug && warn Data::Dump::dump($result);
+			$log->is_debug && warn Dumper($result);
 
 			$result ||= {};
 			
@@ -237,7 +240,7 @@ sub searchArtists {
 		},
 
 		sub {
-			warn Data::Dump::dump(@_);
+			warn Dumper(@_);
 			$log->error($_[1]);
 			$cb->( { error => $_[1] } );
 		},
@@ -249,9 +252,5 @@ sub searchArtists {
 	)->post($url,'Content-Type' => 'application/json', $postdata);
 
 }
-
-
-	
-
 
 1;
