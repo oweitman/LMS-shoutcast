@@ -373,5 +373,5 @@ my %GENRES;
 );
 
 sub getGenres {
-	return %GENRES;
+	return \%GENRES;
 }

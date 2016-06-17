@@ -73,12 +73,12 @@ sub GenreHandler {
 
 	my ($client, $cb, $args) = @_;
 	
-	my %g = Plugins::NewShoutcast::Genres::getGenres();
+	my $g = Plugins::NewShoutcast::Genres::getGenres();
 	$log->info("Shoutcast GenresHandler");
 
 	my $items = [];
 
-	for my $genre ( sort keys %g ) {
+	for my $genre ( sort keys %$g ) {
 
 		push @$items, {
 			name => $genre,
@@ -98,7 +98,7 @@ sub subGenreHandler {
 
 	$params ||= {};
 	
-	my %genres = Plugins::NewShoutcast::Genres::getGenres();
+	my $genres = Plugins::NewShoutcast::Genres::getGenres();
 	my $genre = $params->{genre};
 	$log->info("Shoutcast subGenresHandler");
 
@@ -111,7 +111,7 @@ sub subGenreHandler {
 		passthrough => [  { genre => $genre } ],
 	};
 
-	for my $subgenre ( @{ $genres{ $params->{genre} } } ) {
+	for my $subgenre ( @{ %$genres{ $params->{genre} } } ) {
 
 		push @$items, {
 			name => $subgenre,
@@ -132,7 +132,8 @@ sub searchStationsHandler {
 	my ($client, $cb, $args, $params) = @_;
 
 	my $key = $args->{search};
-	$log->info("Shoutcast searchStationsHandler".Dumper( $args->{search} ));
+	$log->info("Shoutcast searchStationsHandler");
+#	$log->info(Dumper( $args->{search} ));
 
 	Plugins::NewShoutcast::API->searchStations( $key, sub {
 
