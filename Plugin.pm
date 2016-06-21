@@ -3,7 +3,7 @@ package Plugins::NewShoutcast::Plugin;
 # Plugin to stream  Shoutcast radio stations
 #
 # Released under GPLv2
-
+ 
 use strict;
 use Switch;
 use base qw(Slim::Plugin::OPMLBased);
