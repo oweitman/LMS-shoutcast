@@ -2,14 +2,14 @@
 <extensions>
   <module>Plugins::NewShoutcast::Plugin</module>
   <description>PLUGIN_NEWSHOUTCAST_DESC</description>
-  <creator>oweitmann</creator>
-  <version>0.0.6</version>
+  <creator>oweitman</creator>
+  <version>0.0.7</version>
   <needsMySB>false</needsMySB>
   <defaultState>enabled</defaultState>
   <homepageURL>https://github.com/oweitman/LMS-shoutcast</homepageURL>
   <icon>plugins/NewShoutcast/html/images/shoutcast.png</icon>
   <targetApplication>
-    <maxVersion>7.*</maxVersion>
+    <maxVersion>*</maxVersion>
     <minVersion>7.7</minVersion>
     <id>SlimServer</id>
   </targetApplication>
