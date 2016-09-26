@@ -3,7 +3,7 @@
     <title lang="EN">New Shoutcast Plugin</title>
   </details>
   <plugins>
-    <plugin name="Shoutcast Plugin" version="0.8" minTarget="7.7" maxTarget="*">
+    <plugin name="NewShoutcast" version="0.8" minTarget="7.7" maxTarget="*">
       <title lang="EN">Shoutcast Plugin</title>
       <desc lang="EN">3rd party Plugin für the Logitech Media Server to play shoutcast streams without a mysqueezebox.com account</desc>
       <url>
