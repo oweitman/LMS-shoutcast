@@ -1,5 +1,5 @@
 PLUGIN_NEWSHOUTCAST
-	EN	Shoutcast Plugin	
+	EN	NewShoutcast	
 
 PLUGIN_NEWSHOUTCAST_MENU
 	EN	Shoutcast
