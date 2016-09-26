@@ -5,7 +5,6 @@ package Plugins::NewShoutcast::Plugin;
 # Released under GPLv2
  
 use strict;
-#use Switch;
 use base qw(Slim::Plugin::OPMLBased);
 
 use Data::Dumper;
@@ -349,26 +348,15 @@ sub getStations {
 	my @stations = @{ $stations };
 	my @sorted ;
 
-#	switch($prefs->get('sorting')){
-#		case 'L'	{ 
-#				@sorted =  sort { $b->{Listeners} <=> $a->{Listeners} } @stations ; 
-#				}
-#		case 'B'	{
-#				@sorted =  sort { $b->{Bitrate} <=> $a->{Bitrate} } @stations ; 
-#				}
-#		case 'A'	{ 
-#				@sorted =  sort { $b->{Name} <=> $a->{Name} } @stations ; 
-#				}
-#	}
 
-	if ($prefs->get('sorting') == 'L') {
+	if ($prefs->get('sorting') eq 'L') {
 		@sorted =  sort { $b->{Listeners} <=> $a->{Listeners} } @stations ; 
 	}
-	if ($prefs->get('sorting') == 'B') {
+	if ($prefs->get('sorting') eq 'B') {
 		@sorted =  sort { $b->{Bitrate} <=> $a->{Bitrate} } @stations ; 
 	}
-	if ($prefs->get('sorting') == 'A') {
-		@sorted =  sort { $b->{Name} <=> $a->{Name} } @stations ; 
+	if ($prefs->get('sorting') eq 'A') {
+		@sorted =  sort { $b->{Name} <=> $a->{Name} } @stations ;
 	}
 
 
