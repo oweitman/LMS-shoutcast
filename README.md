@@ -8,7 +8,7 @@ To Install:
 
 Open the LMS GUI; click on Settings, then select the Plugins tab, at the bottom of the page add the repo:
 
-https://raw.githubusercontent.com/oweitman/LMS-shoutcast/master/public.xml
+http://raw.githubusercontent.com/oweitman/LMS-shoutcast/master/public.xml
 
 Next install the plugin and enable as usual.
 
