@@ -6,11 +6,11 @@ PLUGIN_NEWSHOUTCAST_MENU
 
 PLUGIN_NEWSHOUTCAST_DESC
 	EN	Plugin to stream  Shoutcast radio stations
-	DE	Plugin fÃ¼r das streamen von Shoutcast Radiostationen
+	DE	Plugin für das streamen von Shoutcast Radiostationen
 	
 PLUGIN_NEWSHOUTCAST_MISSINGSSL
 	EN	SSL required (try to install it using CPAN and/or on Linux do "sudo apt-get install libio-socket-ssl-perl libnet-ssleay-perl")
-	DE	SSL wird benÃ¶tigt (versuche SSL Ã¼ber CPAN und/order den Linuxbefehl "sudo apt-get install libio-socket-ssl-perl libnet-ssleay-perl" zu installieren.
+	DE	SSL wird benötigt (versuche SSL über CPAN und/order den Linuxbefehl "sudo apt-get install libio-socket-ssl-perl libnet-ssleay-perl" zu installieren.
 
 PLUGIN_NEWSHOUTCAST_GENRES
 	EN	Genres
@@ -30,7 +30,7 @@ PLUGIN_NEWSHOUTCAST_SEARCHARTIST
 
 PLUGIN_NEWSHOUTCAST_LISTENER
 	EN	Listeners
-	DE	HÃ¶rer
+	DE	Hörer
 
 PLUGIN_NEWSHOUTCAST_BITRATE
 	EN	Bitrate
@@ -50,23 +50,23 @@ PLUGIN_NEWSHOUTCAST_BITRATEFILTER_0
 	
 PLUGIN_NEWSHOUTCAST_BITRATEFILTER_32
 	EN	32kb/s and up
-	DE	32kb/s und hÃ¶her
+	DE	32kb/s und höher
 	
 PLUGIN_NEWSHOUTCAST_BITRATEFILTER_64
 	EN	64kb/s and up
-	DE	64kb/s und hÃ¶her
+	DE	64kb/s und höher
 	
 PLUGIN_NEWSHOUTCAST_BITRATEFILTER_96
 	EN	96kb/s and up
-	DE	96kb/s und hÃ¶her
+	DE	96kb/s und höher
 	
 PLUGIN_NEWSHOUTCAST_BITRATEFILTER_128
 	EN	128kb/s and up
-	DE	128kb/s und hÃ¶her
+	DE	128kb/s und höher
 	
 PLUGIN_NEWSHOUTCAST_BITRATEFILTER_256
 	EN	256kb/s and up
-	DE	256kb/s und hÃ¶her
+	DE	256kb/s und höher
 	
 PLUGIN_NEWSHOUTCAST_BITRATEFILTER_SET
 	EN	Bitrate Filter set
