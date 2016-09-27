@@ -251,7 +251,7 @@ sub subGenreHandler {
 
 	$params ||= {};
 	
-	my %genres = %{ Plugins::NewShoutcast::Genres::getGenres()} ;
+	my $genres = Plugins::NewShoutcast::Genres::getGenres();
 	my $genre = $params->{genre};
 
 	my $items = [];
@@ -263,7 +263,7 @@ sub subGenreHandler {
 		passthrough => [  { genre => $genre } ],
 	};
 
-	for my $subgenre ( @{ %genres{$genre} } ) {
+	for my $subgenre ( @{ $genres->{$genre} } ) {
 		push @$items, {
 			name => $subgenre,
 			type => 'url',
@@ -276,7 +276,6 @@ sub subGenreHandler {
 	return;
 
 }
-
 
 sub searchStationsHandler {
 	my ($client, $cb, $args, $params) = @_;
