@@ -5,6 +5,8 @@ package Plugins::NewShoutcast::Plugin;
 # Released under GPLv2
  
 use strict;
+use warnings;
+
 use base qw(Slim::Plugin::OPMLBased);
 
 use Data::Dumper;
@@ -229,7 +231,7 @@ sub GenreHandler {
 
 	my $items = [];
 
-	for my $genre ( sort keys %$g ) {
+	for my $genre ( sort keys % { $g } ) {
 
 		push @$items, {
 			name => $genre,

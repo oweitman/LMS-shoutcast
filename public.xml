@@ -3,14 +3,14 @@
     <title lang="EN">New Shoutcast Plugin</title>
   </details>
   <plugins>
-    <plugin name="NewShoutcast" version="0.14" minTarget="7.7" maxTarget="*">
+    <plugin name="NewShoutcast" version="0.15" minTarget="7.7" maxTarget="*">
       <title lang="EN">Shoutcast Plugin</title>
       <desc lang="EN">3rd party Plugin für the Logitech Media Server to play shoutcast streams without a mysqueezebox.com account</desc>
       <url>
         https://raw.githubusercontent.com/oweitman/LMS-shoutcast/master/NewShoutcast.zip
       </url>
       <link>https://github.com/oweitman/LMS-shoutcast</link>
-      <sha>0d1f53440bd2a0e8a707ecb36d59763413adfd3d</sha>
+      <sha>7ce67dd4529ab8f9be6f4a4d6bc18c45019248da</sha>
       <creator>oweitman</creator>
       <email>oweitman@users.noreply.github.com</email>
     </plugin>
