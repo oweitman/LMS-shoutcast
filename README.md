@@ -14,7 +14,7 @@ Next install the plugin and enable as usual.
 
 OR
 
-##Alternative2
+##Alternative 2:
 
 1. download the source
 2. check on the information-page in the LMS-settings for your plugin-folders

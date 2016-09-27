@@ -227,19 +227,17 @@ sub GenreHandler {
 
 	$log->debug("Shoutcast GenresHandler");
 	
-	my $g = Plugins::NewShoutcast::Genres::getGenres();
+	my %genres = %{ Plugins::NewShoutcast::Genres::getGenres() };
 
 	my $items = [];
 
-	for my $genre ( sort keys % { $g } ) {
-
+	for my $genre ( sort keys %genres ) {
 		push @$items, {
 			name => $genre,
 			type => 'url',
 			url  => \&subGenreHandler,
 			passthrough => [  { genre => $genre } ],
 		};
-
 	}
 	$cb->( $items );
 
@@ -253,7 +251,7 @@ sub subGenreHandler {
 
 	$params ||= {};
 	
-	my $genres = Plugins::NewShoutcast::Genres::getGenres();
+	my %genres = %{ Plugins::NewShoutcast::Genres::getGenres()} ;
 	my $genre = $params->{genre};
 
 	my $items = [];
@@ -265,15 +263,13 @@ sub subGenreHandler {
 		passthrough => [  { genre => $genre } ],
 	};
 
-	for my $subgenre ( @{ %$genres{ $params->{genre} } } ) {
-
+	for my $subgenre ( @{ %genres{$genre} } ) {
 		push @$items, {
 			name => $subgenre,
 			type => 'url',
 			url  => \&searchGenreHandler,
 			passthrough => [  { genre => $subgenre } ],
 		};
-
 	}
 	$cb->( $items );
 
