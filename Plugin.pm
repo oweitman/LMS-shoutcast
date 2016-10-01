@@ -210,6 +210,13 @@ sub bitrateFilterHandler {
 		passthrough => [  { filter => '128' } ],
 	};
 	push @$items, {
+		name => ($prefs->get('bitrate_filter')==192 ? '-> ' : '') . cstring($client, 'PLUGIN_NEWSHOUTCAST_BITRATEFILTER_192'),
+		type => 'url',
+
+		url  => \&setBitrateHandler,
+		passthrough => [  { filter => '192' } ],
+	};
+	push @$items, {
 		name => ($prefs->get('bitrate_filter')==256 ? '-> ' : '') . cstring($client, 'PLUGIN_NEWSHOUTCAST_BITRATEFILTER_256'),
 		type => 'url',
 

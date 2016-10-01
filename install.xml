@@ -3,7 +3,7 @@
   <module>Plugins::NewShoutcast::Plugin</module>
   <description>PLUGIN_NEWSHOUTCAST_DESC</description>
   <creator>oweitman</creator>
-  <version>0.18</version>
+  <version>0.19</version>
   <defaultState>enabled</defaultState>
   <homepageURL>https://github.com/oweitman/LMS-shoutcast</homepageURL>
   <icon>plugins/NewShoutcast/html/images/shoutcast.png</icon>
