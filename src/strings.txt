@@ -1,0 +1,104 @@
+PLUGIN_NEWSHOUTCAST
+	EN	NewShoutcast	
+
+PLUGIN_NEWSHOUTCAST_MENU
+	EN	Shoutcast
+
+PLUGIN_NEWSHOUTCAST_DESC
+	EN	Plugin to stream  Shoutcast radio stations
+	DE	Plugin für das streamen von Shoutcast Radiostationen
+	
+PLUGIN_NEWSHOUTCAST_MISSINGSSL
+	EN	SSL required (try to install it using CPAN and/or on Linux do "sudo apt-get install libio-socket-ssl-perl libnet-ssleay-perl")
+	DE	SSL wird benötigt (versuche SSL über CPAN und/order den Linuxbefehl "sudo apt-get install libio-socket-ssl-perl libnet-ssleay-perl" zu installieren.
+
+PLUGIN_NEWSHOUTCAST_GENRES
+	EN	Genres
+	DE	Genres
+	
+PLUGIN_NEWSHOUTCAST_TOPSTATIONS
+	EN	Top Stations
+	DE	Beliebte Sender
+
+PLUGIN_NEWSHOUTCAST_SEARCHSTATION
+	EN	Search for Stations
+	DE	Suche nach Sendern
+
+PLUGIN_NEWSHOUTCAST_SEARCHARTIST
+	EN	Search for Artists
+	DE	Suche nach Interpreten
+
+PLUGIN_NEWSHOUTCAST_LISTENER
+	EN	Listeners
+	DE	Hörer
+
+PLUGIN_NEWSHOUTCAST_BITRATE
+	EN	Bitrate
+	DE	Bitrate
+
+PLUGIN_NEWSHOUTCAST_SETTINGS
+	EN	Settings
+	DE	Einstellungen
+
+PLUGIN_NEWSHOUTCAST_BITRATEFILTERING
+	EN	Bitrate-Filtering
+	DE	Bitrate-Filterung
+	
+PLUGIN_NEWSHOUTCAST_BITRATEFILTER_0
+	EN	No Filter
+	DE	Kein Filter
+	
+PLUGIN_NEWSHOUTCAST_BITRATEFILTER_32
+	EN	32kb/s and up
+	DE	32kb/s und höher
+	
+PLUGIN_NEWSHOUTCAST_BITRATEFILTER_64
+	EN	64kb/s and up
+	DE	64kb/s und höher
+	
+PLUGIN_NEWSHOUTCAST_BITRATEFILTER_96
+	EN	96kb/s and up
+	DE	96kb/s und höher
+	
+PLUGIN_NEWSHOUTCAST_BITRATEFILTER_128
+	EN	128kb/s and up
+	DE	128kb/s und höher
+	
+PLUGIN_NEWSHOUTCAST_BITRATEFILTER_192
+	EN	192kb/s and up
+	DE	192kb/s und höher
+	
+PLUGIN_NEWSHOUTCAST_BITRATEFILTER_256
+	EN	256kb/s and up
+	DE	256kb/s und höher
+	
+PLUGIN_NEWSHOUTCAST_BITRATEFILTER_SET
+	EN	Bitrate Filter set
+	DE	Bitrate Filter gesetzt
+	
+PLUGIN_NEWSHOUTCAST_BITRATEFILTERING_RESULT
+	EN	Bitrate-Filtering saved
+	DE	Bitrate-Filterung gesetzt
+	
+PLUGIN_NEWSHOUTCAST_SORTING
+	EN	Sorting order of stations
+	DE	Sortierreihenfolge der Sender
+	
+PLUGIN_NEWSHOUTCAST_SORT_LISTENER
+	EN	Number of Listener
+	DE	Anzahl Hörer
+
+PLUGIN_NEWSHOUTCAST_SORT_BITRATE
+	EN	Highest Bitrate
+	DE	Höchste Bitrate
+
+PLUGIN_NEWSHOUTCAST_SORT_ALPHA
+	EN	Alphanumeric
+	DE	Alphabetisch
+
+PLUGIN_NEWSHOUTCAST_SORTING_RESULT
+	EN	Sorting order saved
+	DE	Sortierung gesetzt
+
+
+
