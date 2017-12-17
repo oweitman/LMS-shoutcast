@@ -1,3 +1,8 @@
+# used tools
+# bumpversion-> https://github.com/peritus/bumpversion
+# github-release -> https://github.com/j0057/github-release
+
+
 REPO=LMS-shoutcast
 # REPO=$(notdir $(PWD))
 
