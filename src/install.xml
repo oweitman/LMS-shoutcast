@@ -3,7 +3,7 @@
   <module>Plugins::NewShoutcast::Plugin</module>
   <description>PLUGIN_NEWSHOUTCAST_DESC</description>
   <creator>oweitman</creator>
-  <version>0.19.4</version>
+  <version>0.19.5</version>
   <defaultState>enabled</defaultState>
   <homepageURL>http://forums.slimdevices.com/showthread.php?105783-Announce-Shoutcast-Plugin</homepageURL>
   <icon>plugins/NewShoutcast/html/images/shoutcast.png</icon>
