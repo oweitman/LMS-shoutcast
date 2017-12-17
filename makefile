@@ -1,8 +1,8 @@
-REPO=$(notdir $(PWD))
+REPO=LMS-shoutcast
+# REPO=$(notdir $(PWD))
 
 GITHUB_USER=oweitman
-# GITHUB_REPO="$(GITHUB_USER)/$(REPO)"
-GITHUB_REPO="oweitman/LMS-shoutcast"
+GITHUB_REPO="$(GITHUB_USER)/$(REPO)"
 
 ZIP=zip -9r --symlinks
 BUMPVERSION_CFG=.bumpversion.cfg
