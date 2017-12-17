@@ -1,12 +1,13 @@
 REPO=$(notdir $(PWD))
 
 GITHUB_USER=oweitman
-GITHUB_REPO="$(GITHUB_USER)/$(REPO)"
+# GITHUB_REPO="$(GITHUB_USER)/$(REPO)"
+GITHUB_REPO="oweitman/LMS-shoutcast"
 
 ZIP=zip -9r --symlinks
 BUMPVERSION_CFG=.bumpversion.cfg
 VERSION=$(shell grep current_version $(BUMPVERSION_CFG) | cut -d "=" -f 2 | xargs)
-ASSET=dist/release-$(VERSION).zip
+ASSET=dist/NewShoutcast-$(VERSION).zip
 SHA=$(shell sha1sum -b $(ASSET) | cut -d " " -f 1)
 SRC=src/install.xml src/Plugin.pm src/HTML
 
