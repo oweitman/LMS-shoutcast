@@ -7,7 +7,7 @@
       <title lang="EN">Shoutcast Plugin</title>
       <desc lang="EN">3rd party Plugin für the Logitech Media Server to play shoutcast streams without a mysqueezebox.com account</desc>
       <url>
-	https://github.com/oweitman/LMS-shoutcast/releases/download/0.0.31/NewShoutcast-0.19.3.zip
+	https://github.com/oweitman/LMS-shoutcast/releases/download/0.19.3/NewShoutcast-0.19.3.zip
       </url>
       <link>https://github.com/oweitman/LMS-shoutcast</link>
       <sha>587742a86c9b5eb3ef8fd24a28f2b94ab5a8ff8d</sha>
