@@ -360,9 +360,8 @@ sub getStations {
 		@sorted =  sort { $b->{Bitrate} <=> $a->{Bitrate} } @stations ; 
 	}
 	if ($prefs->get('sorting') eq 'A') {
-		@sorted =  sort { $b->{Name} <=> $a->{Name} } @stations ;
+		@sorted =  sort { $a->{Name} cmp $b->{Name} } @stations ;
 	}
-
 
 	my $station = [];
 

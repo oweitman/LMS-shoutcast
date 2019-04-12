@@ -56,8 +56,6 @@ sub browseByGenre {
 				$log->error($@);
 			}
 
-			$log->is_debug && warn Dumper($result);
-
 			$result ||= {};
 			
 			$cache->set($cacheKey, $result, 5*60 || DEFAULT_CACHE_TTL);
@@ -140,22 +138,22 @@ sub searchStations {
 
 	$log->debug("Shoutcast searchStations");
 
-//	my $url = "https://www.shoutcast.com/Search/UpdateAdvancedSearch";
+#	my $url = "https://www.shoutcast.com/Search/UpdateAdvancedSearch";
 	my $url = "https://directory.shoutcast.com/Search/UpdateSearch";
 
 	my $postdata = to_json({
 		query	=> $key,
 	});
 
-/*
-	my $postdata = to_json({
-		genre	=> "",
-		artist	=> "",
-		station	=> $key,
-		song	=> "",
-		genr	=> "",
-	});
-*/
+
+#	my $postdata = to_json({
+#		genre	=> "",
+#		artist	=> "",
+#		station	=> $key,
+#		song	=> "",
+#		genr	=> "",
+#	});
+
 
 	my $cacheKey = $args->{_noCache} ? '' : md5_hex($url.'stations'.$key);
 
@@ -207,7 +205,7 @@ sub searchArtists {
 
 	$log->debug("Shoutcast searchArtists");
 
-//	my $url = "https://www.shoutcast.com/Search/UpdateAdvancedSearch";
+#	my $url = "https://www.shoutcast.com/Search/UpdateAdvancedSearch";
 	my $url = "https://directory.shoutcast.com/Search/UpdateSearch";
 
 
@@ -215,15 +213,15 @@ sub searchArtists {
 		query	=> $key,
 	});
 
-/*
-	my $postdata = to_json({
-		genre	=> "",
-		artist	=> $key,
-		station	=> "",
-		song	=> "",
-		genr	=> "",
-	});
-*/
+
+#	my $postdata = to_json({
+#		genre	=> "",
+#		artist	=> $key,
+#		station	=> "",
+#		song	=> "",
+#		genr	=> "",
+#	});
+
 
 	my $cacheKey = $args->{_noCache} ? '' : md5_hex($url.'artists'.$key);
 
