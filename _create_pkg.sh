@@ -12,7 +12,7 @@ fi
 rm -fv NewShoutcast.zip
 
 # correct version must already be included
-sed -i "s#<version>.*</version>#<version>${VER}</version>#" install.xml
+sed -i "s#<version>.*</version>#<version>${VER}</version>#" src/install.xml
 
 zip -r NewShoutcast.zip *.pm *.txt *.md *.xml HTML
 
